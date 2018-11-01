@@ -15,4 +15,11 @@ public class NoNullArrayList<T> extends ArrayList<T> {
     return super.set(i,value);
   }
 
+  public boolean add(T value) {
+    if (value == null) {
+      throw new IllegalArgumentException("Cannot add null to the ArrayList");
+    }
+    return super.add(value);
+  }
+
 }
