@@ -22,4 +22,11 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     this.add(value);
   }
 
+  public T set(int i, T value) {
+    T old = this.get(i);
+    super.remove(i);
+    add(value);
+    return old;
+  }
+
 }
