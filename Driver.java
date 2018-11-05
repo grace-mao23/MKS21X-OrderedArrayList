@@ -36,6 +36,13 @@ public class Driver {
 			System.out.println(++c+". You are producing a "+e.getClass().getCanonicalName()+" when adding/setting a null value to a NoNullArrayList. You should be throwing IllegalArgumentException instead.");
 		}
 
+		array.clear();
+
+		try {
+			if (!array.add("a")) System.out.println(++c+". You aren't returning true when NoNullArrayList.add(T) is called.");
+			if (!array.set(0, "b").equals("a")) System.out.println(++c+". You aren't returning the old element at <index> when NoNullArrayList.set(index, T) is called.");
+		} catch (Exception e) {}
+
 		array = new OrderedArrayList<>();
 
 		try {
@@ -84,6 +91,13 @@ public class Driver {
 		} catch (Exception e) {
 			System.out.println(++c+". You are producing a "+e.getClass().getCanonicalName()+" when adding/setting a null value to an OrderedArrayList. You should be throwing IllegalArgumentException instead.");
 		}
+
+		array.clear();
+
+		try {
+			if (!array.add("a")) System.out.println(++c+". You aren't returning true when OrderedArrayList.add(T) is called.");
+			if (!array.set(0, "b").equals("a")) System.out.println(++c+". You aren't returning the old element at <index> when OrderedArrayList.set(index, T) is called.");
+		} catch (Exception e) {}
 
 		if (c == 0) System.out.println("Your code passed every test. Nice work.");
 		else System.out.println("\nYou produced "+c+" unexpected results. Keep debugging!");
