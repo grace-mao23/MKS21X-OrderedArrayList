@@ -12,13 +12,13 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     if (value == null) {
       throw new IllegalArgumentException("Cannot add null");
     }
+    int result = 0;
     for (int i = 0; i < size(); i++) {
-      if (value.compareTo(this.get(i)) <= 0) {
-        super.add(i, value);
-        return true;
+      if (value.compareTo(get(i)) > 0) {
+        result = i + 1;
       }
     }
-    super.add(0, value);
+    super.add(result, value);
     return true;
   }
 
